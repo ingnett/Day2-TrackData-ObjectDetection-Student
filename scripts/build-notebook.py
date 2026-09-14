@@ -10,7 +10,12 @@ TARGET = ROOT / "notebooks" / "day2-detection-quality.ipynb"
 
 
 def markdown(cell_id, source):
-    return {"cell_type": "markdown", "id": cell_id, "metadata": {}, "source": source.splitlines(keepends=True)}
+    return {
+        "cell_type": "markdown",
+        "id": cell_id,
+        "metadata": {"language": "markdown"},
+        "source": source.splitlines(keepends=True),
+    }
 
 
 def code(cell_id, source):
@@ -18,7 +23,7 @@ def code(cell_id, source):
         "cell_type": "code",
         "execution_count": None,
         "id": cell_id,
-        "metadata": {},
+        "metadata": {"language": "python"},
         "outputs": [],
         "source": source.splitlines(keepends=True),
     }
@@ -67,6 +72,7 @@ gói xuất của nhau trước khi cả hai hoàn thành. Người làm cá nh�
         "install-pinned-dependencies",
         """# 0a — Cài đúng phiên bản của bài thực hành; chờ ô lệnh chạy xong.
 %pip -q install ultralytics==8.4.145 certifi==2026.6.17
+%pip -q install scipy
 """,
     ),
     code("embedded-tested-helpers", helper_source),
